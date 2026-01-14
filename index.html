@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ford Performance - Production Pulse</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        .fade-in { animation: fadeIn 0.2s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(2px); } to { opacity: 1; transform: translateY(0); } }
+        
+        /* Ford Colors & Custom Palette */
+        :root {
+            --ford-blue: #003478;
+            --col-green: #02b547;
+            --col-purple: #a22bfc;
+            --col-blue: #2576fe;
+            --col-orange: #fb5d01;
+        }
+
+        body { background-color: transparent; }
+
+        /* Animations */
+        @keyframes pulse-ring {
+            0% { transform: scale(0.8); opacity: 0.5; }
+            100% { transform: scale(2); opacity: 0; }
+        }
+        .pulse-ring {
+            animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+        }
+        
+        @keyframes load-bar {
+            0% { width: 0%; }
+            100% { width: 98.2%; }
+        }
+        .animate-width {
+            animation: load-bar 1.5s ease-out forwards;
+        }
+    </style>
+</head>
+<body class="font-sans text-slate-800 p-4 min-h-screen flex items-center justify-center">
+
+    <!-- WIDGET CONTAINER: Compact, Single Column -->
+    <div class="w-full max-w-2xl bg-white rounded-lg shadow-sm border border-slate-200 flex flex-col overflow-hidden relative">
+        
+        <!-- HEADER: Consolidated Info -->
+        <div class="bg-[#003478] px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <i data-lucide="factory" class="w-4 h-4 text-white"></i>
+                <div>
+                    <h2 class="text-xs font-bold text-white uppercase tracking-wide leading-none">Shift A: Production Pulse</h2>
+                    <p class="text-[9px] text-blue-200 font-medium leading-none mt-0.5">Dearborn Truck • Final Assy</p>
+                </div>
+            </div>
+            
+            <!-- Live Indicator -->
+            <div class="flex items-center gap-2 bg-blue-900/50 rounded-full px-2 py-1 border border-blue-400/30">
+                <div class="relative w-2 h-2">
+                    <div class="absolute inset-0 bg-[#02b547] rounded-full opacity-75 pulse-ring"></div>
+                    <div class="relative w-2 h-2 bg-[#02b547] rounded-full"></div>
+                </div>
+                <span class="text-[9px] font-bold text-white uppercase">Line Running</span>
+            </div>
+        </div>
+
+        <!-- MAIN BODY: 3 Big Metrics -->
+        <div class="p-3 grid grid-cols-3 gap-3 bg-slate-50/50">
+            
+            <!-- JPH (Volume) -->
+            <div class="bg-white border border-slate-200 rounded p-3 text-center shadow-sm flex flex-col justify-between relative overflow-hidden group">
+                <div class="absolute top-0 left-0 w-full h-1 bg-[#02b547]"></div>
+                <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">Volume (JPH)</span>
+                <span class="text-3xl font-black text-slate-800 tracking-tight leading-none group-hover:scale-110 transition-transform duration-300">62</span>
+                <span class="text-[10px] font-bold text-[#02b547] bg-green-50 rounded-full py-0.5 px-2 mx-auto mt-2 inline-block">
+                    ▲ +2
+                </span>
+            </div>
+
+            <!-- FTT (Quality) -->
+            <div class="bg-white border border-slate-200 rounded p-3 text-center shadow-sm flex flex-col justify-between relative overflow-hidden group">
+                <div class="absolute top-0 left-0 w-full h-1 bg-[#2576fe]"></div>
+                <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">Quality (FTT)</span>
+                <span class="text-3xl font-black text-slate-800 tracking-tight leading-none group-hover:scale-110 transition-transform duration-300">98.2<span class="text-lg text-slate-400">%</span></span>
+                <div class="w-full bg-slate-100 h-1.5 rounded-full mt-2 overflow-hidden">
+                    <div class="bg-[#2576fe] h-full rounded-full animate-width" style="width: 0%"></div>
+                </div>
+            </div>
+
+            <!-- OEE (Efficiency) -->
+            <div class="bg-white border border-slate-200 rounded p-3 text-center shadow-sm flex flex-col justify-between relative overflow-hidden group">
+                <div class="absolute top-0 left-0 w-full h-1 bg-[#fb5d01]"></div>
+                <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">Efficiency</span>
+                <span class="text-3xl font-black text-slate-800 tracking-tight leading-none group-hover:scale-110 transition-transform duration-300">85<span class="text-lg text-slate-400">%</span></span>
+                <span class="text-[10px] font-bold text-[#fb5d01] bg-orange-50 rounded-full py-0.5 px-2 mx-auto mt-2 inline-block">
+                    Target: 88%
+                </span>
+            </div>
+        </div>
+
+        <!-- FOOTER: Pay/Bonus Ticker -->
+        <div class="bg-white border-t border-slate-200 px-4 py-2 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="flex items-center gap-1.5">
+                    <div class="p-1 bg-emerald-100 rounded-full text-emerald-700">
+                        <i data-lucide="dollar-sign" class="w-3 h-3"></i>
+                    </div>
+                    <div class="flex flex-col leading-none">
+                        <span class="text-[9px] text-slate-400 font-bold uppercase">Daily Bonus</span>
+                        <span class="text-[11px] font-bold text-emerald-700">QUALIFYING</span>
+                    </div>
+                </div>
+            </div>
+            <span class="text-[9px] text-slate-400 font-mono">UPDATED: 14:32</span>
+        </div>
+
+    </div>
+
+    <!-- Initialize Icons -->
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
