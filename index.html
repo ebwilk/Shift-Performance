@@ -24,6 +24,7 @@
             --col-orange: #fb5d01;
         }
 
+        /* Transparent background for embedding */
         body { background-color: transparent; }
 
         /* Animations */
@@ -44,10 +45,11 @@
         }
     </style>
 </head>
-<body class="font-sans text-slate-800 p-4 min-h-screen flex items-center justify-center">
+<!-- Removed min-h-screen, flex, items-start, justify-center to fix spacing issues -->
+<body class="font-sans text-slate-800 p-0">
 
-    <!-- WIDGET CONTAINER: Compact, Single Column -->
-    <div class="w-full max-w-2xl bg-white rounded-lg shadow-sm border border-slate-200 flex flex-col overflow-hidden relative">
+    <!-- WIDGET CONTAINER -->
+    <div class="w-full max-w-3xl bg-white rounded-lg shadow-sm border border-slate-200 flex flex-col overflow-hidden relative h-[240px]">
         
         <!-- HEADER: Consolidated Info -->
         <div class="bg-[#003478] px-4 py-3 flex items-center justify-between">
@@ -70,34 +72,34 @@
         </div>
 
         <!-- MAIN BODY: 3 Big Metrics -->
-        <div class="p-3 grid grid-cols-3 gap-3 bg-slate-50/50">
+        <div class="p-3 grid grid-cols-3 gap-3 bg-slate-50/50 flex-1">
             
             <!-- JPH (Volume) -->
-            <div class="bg-white border border-slate-200 rounded p-3 text-center shadow-sm flex flex-col justify-between relative overflow-hidden group">
+            <div class="bg-white border border-slate-200 rounded p-2 text-center shadow-sm flex flex-col justify-between relative overflow-hidden group">
                 <div class="absolute top-0 left-0 w-full h-1 bg-[#02b547]"></div>
                 <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">Volume (JPH)</span>
                 <span class="text-3xl font-black text-slate-800 tracking-tight leading-none group-hover:scale-110 transition-transform duration-300">62</span>
-                <span class="text-[10px] font-bold text-[#02b547] bg-green-50 rounded-full py-0.5 px-2 mx-auto mt-2 inline-block">
+                <span class="text-[10px] font-bold text-[#02b547] bg-green-50 rounded-full py-0.5 px-2 mx-auto mt-1 inline-block">
                     ▲ +2
                 </span>
             </div>
 
             <!-- FTT (Quality) -->
-            <div class="bg-white border border-slate-200 rounded p-3 text-center shadow-sm flex flex-col justify-between relative overflow-hidden group">
+            <div class="bg-white border border-slate-200 rounded p-2 text-center shadow-sm flex flex-col justify-between relative overflow-hidden group">
                 <div class="absolute top-0 left-0 w-full h-1 bg-[#2576fe]"></div>
                 <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">Quality (FTT)</span>
                 <span class="text-3xl font-black text-slate-800 tracking-tight leading-none group-hover:scale-110 transition-transform duration-300">98.2<span class="text-lg text-slate-400">%</span></span>
-                <div class="w-full bg-slate-100 h-1.5 rounded-full mt-2 overflow-hidden">
+                <div class="w-full bg-slate-100 h-1.5 rounded-full mt-1 overflow-hidden">
                     <div class="bg-[#2576fe] h-full rounded-full animate-width" style="width: 0%"></div>
                 </div>
             </div>
 
             <!-- OEE (Efficiency) -->
-            <div class="bg-white border border-slate-200 rounded p-3 text-center shadow-sm flex flex-col justify-between relative overflow-hidden group">
+            <div class="bg-white border border-slate-200 rounded p-2 text-center shadow-sm flex flex-col justify-between relative overflow-hidden group">
                 <div class="absolute top-0 left-0 w-full h-1 bg-[#fb5d01]"></div>
                 <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">Efficiency</span>
                 <span class="text-3xl font-black text-slate-800 tracking-tight leading-none group-hover:scale-110 transition-transform duration-300">85<span class="text-lg text-slate-400">%</span></span>
-                <span class="text-[10px] font-bold text-[#fb5d01] bg-orange-50 rounded-full py-0.5 px-2 mx-auto mt-2 inline-block">
+                <span class="text-[10px] font-bold text-[#fb5d01] bg-orange-50 rounded-full py-0.5 px-2 mx-auto mt-1 inline-block">
                     Target: 88%
                 </span>
             </div>
